@@ -57,4 +57,20 @@ public class Offer extends BaseEntity{
     public void setCondition(Condition condition) {
         this.condition = condition;
     }
+
+    public User getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(User createBy) {
+        this.createBy = createBy;
+    }
+
+    public User getBoughtBy() {
+        return boughtBy;
+    }
+
+    public void setBoughtBy(User boughtBy) {
+        this.boughtBy = boughtBy;
+    }
 }
