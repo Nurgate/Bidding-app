@@ -1,14 +1,14 @@
 package com.resellerapp.model;
 
 import com.resellerapp.model.entity.Offer;
-import com.resellerapp.model.enums.ConditionName;
 
-public class OtherOffersDTO extends MyOffersDTO{
+public class OtherOffersDTO extends MyOfferDTO {
 
     private String sellerUsername;
 
-    public OtherOffersDTO() {
-    }
+//    public OtherOffersDTO() {
+//        super();
+//    }
 
 
 

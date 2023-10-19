@@ -4,18 +4,25 @@ import java.util.List;
 
 public class OfferHomeDTO {
 
-    private List<MyOffersDTO> myOffers;
+    private List<MyOfferDTO> myOffers;
     private List<BoughtOffersDTO> boughtOffers;
 
-    private List<OtherOffersDTO> otherOffers;
+    private List<OtherOffersDTO> allOtherOffers;
 
-    private long totalOffers;
+    private long totalOtherOffers;
 
-    public List<MyOffersDTO> getMyOffers() {
+    public OfferHomeDTO(List<MyOfferDTO> myOffers, List<BoughtOffersDTO> boughtOffers, List<OtherOffersDTO> otherOffers) {
+        this.myOffers = myOffers;
+        this.boughtOffers = boughtOffers;
+        this.allOtherOffers = otherOffers;
+        this.totalOtherOffers = otherOffers.size(); // otherOffers = size()
+    }
+
+    public List<MyOfferDTO> getMyOffers() {
         return myOffers;
     }
 
-    public void setMyOffers(List<MyOffersDTO> myOffers) {
+    public void setMyOffers(List<MyOfferDTO> myOffers) {
         this.myOffers = myOffers;
     }
 
@@ -27,19 +34,19 @@ public class OfferHomeDTO {
         this.boughtOffers = boughtOffers;
     }
 
-    public List<OtherOffersDTO> getOtherOffers() {
-        return otherOffers;
+    public List<OtherOffersDTO> getAllOtherOffers() {
+        return allOtherOffers;
     }
 
-    public void setOtherOffers(List<OtherOffersDTO> otherOffers) {
-        this.otherOffers = otherOffers;
+    public void setAllOtherOffers(List<OtherOffersDTO> allOtherOffers) {
+        this.allOtherOffers = allOtherOffers;
     }
 
-    public long getTotalOffers() {
-        return totalOffers;
+    public long getTotalOtherOffers() {
+        return totalOtherOffers;
     }
 
-    public void setTotalOffers(long totalOffers) {
-        this.totalOffers = totalOffers;
+    public void setTotalOtherOffers(long totalOtherOffers) {
+        this.totalOtherOffers = totalOtherOffers;
     }
 }

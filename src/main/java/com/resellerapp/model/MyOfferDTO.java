@@ -1,20 +1,21 @@
 package com.resellerapp.model;
 
-import com.resellerapp.model.entity.Condition;
 import com.resellerapp.model.entity.Offer;
 import com.resellerapp.model.enums.ConditionName;
 
-import java.math.BigDecimal;
+import java.util.UUID;
 
-public class MyOffersDTO extends BoughtOffersDTO {
+public class MyOfferDTO extends BoughtOffersDTO {
     private ConditionName condition;
+    private UUID id;
 
-    public MyOffersDTO() {
-        this(new Offer()); // May to be removed
+    public MyOfferDTO() {
+
     }
 
-    public MyOffersDTO(Offer offer) {
+    public MyOfferDTO(Offer offer) {
         super(offer);
+        id = offer.getId();
         condition = offer.getCondition().getName();
 
     }
@@ -25,5 +26,13 @@ public class MyOffersDTO extends BoughtOffersDTO {
 
     public void setCondition(ConditionName condition) {
         this.condition = condition;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 }

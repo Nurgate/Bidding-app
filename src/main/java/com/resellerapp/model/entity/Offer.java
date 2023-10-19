@@ -1,5 +1,7 @@
 package com.resellerapp.model.entity;
 
+import com.resellerapp.model.OfferCreateBindingModel;
+import com.resellerapp.service.LoggedUser;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Entity;
@@ -32,6 +34,17 @@ public class Offer extends BaseEntity{
 
     @ManyToOne
     private User boughtBy;
+
+    public Offer() {
+
+    }
+
+    public Offer(OfferCreateBindingModel offerCreateBindingModel, Condition condition, User createBy) {
+        description = offerCreateBindingModel.getDescription();
+        price = offerCreateBindingModel.getPrice();
+        this.condition = condition;
+        this.createBy = createBy;
+    }
 
 
     public String getDescription() {
@@ -72,5 +85,9 @@ public class Offer extends BaseEntity{
 
     public void setBoughtBy(User boughtBy) {
         this.boughtBy = boughtBy;
+    }
+
+    public LoggedUser getCreatedBy() {
+        return null;
     }
 }

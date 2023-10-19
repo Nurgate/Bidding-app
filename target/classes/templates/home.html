@@ -21,7 +21,7 @@
                                 <td style="width: 5%" class="bg-info" th:text="${myOffer.condition}">{condition}</td>
                                 <td class="bg-primary" style="width: 15%" th:text="${myOffer.price}">{price} €</td>
                                 <td th:text="${myOffer.description}">{description}</td>
-                                <td style="width: 15%"><a class="btn-danger btn" href="/offers/remove/${myOffer.Id}">Remove</a>
+                                <td style="width: 15%"><a class="btn-danger btn" th:href="@{/offers/remove/{id}(id={myOffer.id})}">Remove</a>
                                 </td>
                             </tr>
                         </table>
@@ -38,7 +38,7 @@
                                          height="35px">
                                 </td>
                                 <td style="width: 5%" class="bg-info">
-                                    <a th:text="${boughtOffer.description}">{itemDescritpion}</a>
+                                    <a th:text="${boughtOffer.description}">{itemDescription}</a>
                                 </td>
                                 <td class="bg-primary" style="width: 15%">
                                     <a th:text="${boughtOffer.price}">{itemPrice} €</a>
@@ -51,12 +51,12 @@
 
             <div class="col-6 mt-1 mb-1">
                 <h3 class="mySticky bg-gray text-dark  mb-0 mt-2">All Other Offers</h3>
-                <h6 class="mySticky bg-gray text-dark  mb-0 mt-0" th:text="offerHomeDTO.totalOffers">{totalOffers}</h6>
+                <h6 class="mySticky bg-gray text-dark  mb-0 mt-0" th:text="${offerHomeDTO.totalOtherOffers} + 'Offers'">{totalOffers}</h6>
                 <div class="bg-dark rounded m-auto" style="height: 67vh; overflow: auto">
                     <div>
                         <div>
                             <br>
-                            <ul th:each="otherOffers : ${offerHomeDTO.allOtherOffers}" class="list-group list-group-horizontal text-dark">
+                            <ul th:each="otherOffer : ${offerHomeDTO.allOtherOffers}" class="list-group list-group-horizontal text-dark">
                                 <li class="list-group-item">
                                     <table>
                                         <tr>
@@ -64,7 +64,7 @@
                                                 <a th:text="${otherOffer.sellerUsername}">{sellersUsername} sells:</a>
                                             </td>
                                             <td>
-                                                <a th:text="${otherOffer.offerDescription}">{offerDescription}</a>
+                                                <a th:text="${otherOffer.description}">{offerDescription}</a>
                                             </td>
                                         </tr>
                                     </table>
@@ -73,14 +73,17 @@
                                     <table>
                                         <tr>
                                             <td style="width: 40%">
-                                                <a th:text="${otherOffer.offerCondition}">Condition: {offerCondition}</a>
+                                                <a th:text="${otherOffer.condition}">Condition: {offerCondition}</a>
                                             </td>
                                             <td class="text-primary" style="width: 40%">
-                                                <a th:text="${otherOffer.offerPrice}">Price: {offerPrice} €</a>
+                                                <a th:text="${otherOffer.price}">Price: {offerPrice} €</a>
                                             </td>
                                             <td>
-                                                <a class="ml-3 text-danger" th:href="/offers/buy/${otherOffer.offerId}">
-                                                    <img src="/img/buy.png" height="35px"></a>
+                                                <form th:method="POST" th:action="@{/offers/buy/{id}(id=${otherOffer.id})}">
+                                                    <button type="submit" class="ml-3 text-danger">
+<!--                                                <a class="ml-3 text-danger" th:href="@{/offers/buy/{id}(id=${otherOffer.id})}">-->
+                                                    <img src="/img/buy.png" height="35px"></button>
+                                                </form>
                                             </td>
                                         </tr>
                                     </table>

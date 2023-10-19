@@ -13,7 +13,10 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-nav rounded">
         <a class="nav-link text-primary active h5 text-stroke" th:href="@{/}">Reseller App</a>
-        <a th:if="${@loggedUser.isLogged}" class="nav-link text-primary active h5 text-stroke" href="/">Add Offer</a>
+        <a th:if="${@loggedUser.isLogged}"
+           th:href="@{/offers/create}"
+           class="nav-link text-primary active h5 text-stroke" >Add Offer</a>
+
 
         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
             <ul class="navbar-nav row">
@@ -29,9 +32,11 @@
                 </li>
 
                 <li th:if="${@loggedUser.isLogged}" class="nav-item col-md-4">
-<!--                    <form th:action="/logout" th:method="POST">-->
-                    <a class="nav-link text-primary active h5 text-stroke" th:href="@{/}">Logout</a>
-<!--                    </form>-->
+                    <form th:action="@{/logout}" method="POST">
+                        <button type="submit" class="nav-link text-primary active h5 text-stroke" th:href="@{/logout}">
+                            Logout
+                        </button>
+                    </form>
                 </li>
             </ul>
         </div>

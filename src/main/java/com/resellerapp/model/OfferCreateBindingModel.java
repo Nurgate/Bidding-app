@@ -1,22 +1,14 @@
 package com.resellerapp.model;
 
-import com.resellerapp.model.entity.Offer;
+
+import com.resellerapp.model.enums.ConditionName;
 
 import java.math.BigDecimal;
 
-public class BoughtOffersDTO {
-
+public class OfferCreateBindingModel {
     private String description;
-
     private BigDecimal price;
-
-    public BoughtOffersDTO() {
-    }
-
-    public BoughtOffersDTO(Offer offer) {
-        description = offer.getDescription();
-        price = offer.getPrice();
-    }
+    private ConditionName condition;
 
     public String getDescription() {
         return description;
@@ -32,5 +24,13 @@ public class BoughtOffersDTO {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public ConditionName getCondition() {
+        return condition;
+    }
+
+    public void setCondition(ConditionName condition) {
+        this.condition = condition;
     }
 }
